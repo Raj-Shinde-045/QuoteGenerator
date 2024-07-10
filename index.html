@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <div class="quote-container">
+          <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme">🌓</button>
+          <div class="loader"></div>
+          <div id="quote"></div>
+          <div id="author"></div>
+          <div class="button-group">
+            <button onclick="generateQuote()" aria-label="Generate new quote">New Quote</button>
+            <button onclick="copyToClipboard()" aria-label="Copy quote to clipboard">Copy</button>
+            <button class="favorite-button" onclick="addToFavorites()" aria-label="Add to favorites">❤️</button>
+          </div>
+          <div class="share-buttons">
+            <button onclick="share('twitter')">Twitter</button>
+            <button onclick="share('facebook')">Facebook</button>
+          </div>
+        </div>
+        <div class="favorites-container">
+          <h3>Favorite Quotes</h3>
+          <ul id="favorites-list"></ul>
+        </div>
+      </div>
+    <script src="script.js"></script>
+</body>
+</html>

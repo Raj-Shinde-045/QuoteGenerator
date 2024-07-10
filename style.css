@@ -1,0 +1,231 @@
+:root {
+  /* Dark mode (default) */
+  --background-gradient: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  --container-gradient: linear-gradient(to right bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  --text-color: #ffffff;
+  --accent-color: #00ff9d;
+  --author-color: #ffd700;
+  --button-gradient: linear-gradient(to right, #fc00ff, #00dbde);
+  --button-hover-gradient: linear-gradient(to right, #00dbde, #fc00ff);
+}
+
+body.light-theme {
+  /* Light mode */
+  --background-gradient: linear-gradient(135deg, #89f7fe, #66a6ff);
+  --container-gradient: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+  --text-color: #333333;
+  --accent-color: #ff6b6b;
+  --author-color: #4a4a4a;
+  --button-gradient: linear-gradient(to right, #ff6b6b, #feca57);
+  --button-hover-gradient: linear-gradient(to right, #feca57, #ff6b6b);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background: var(--background-gradient);
+  color: var(--text-color);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin-top: auto;
+}
+
+.quote-container, .favorites-container {
+  background: var(--container-gradient);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+#quote {
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-weight: 300;
+  transition: opacity 0.5s ease;
+}
+
+#author {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--author-color);
+  transition: opacity 0.5s ease;
+}
+
+button {
+  background: var(--button-gradient);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.8rem 1.5rem;
+  margin-top: 10%;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: var(--button-hover-gradient);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#quote, #author {
+  animation: fadeIn 1s ease;
+}
+
+.loader {
+  border: 5px solid var(--container-gradient);
+  border-top: 5px solid var(--accent-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.share-buttons {
+  margin-top: 1rem;
+}
+
+.share-buttons button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+.favorites-container {
+  margin-top: 2rem;
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#favorites-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#favorites-list li {
+  background: var(--container-gradient);
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.remove-favorite {
+  background: linear-gradient(to right, #ff4444, #ff0000);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.remove-favorite:hover {
+  background: linear-gradient(to right, #ff0000, #ff4444);
+}
+
+#theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+  .main-container {
+    max-width: 90%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .main-container {
+    max-width: 95%;
+  }
+  
+  .quote-container, .favorites-container {
+    padding: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .main-container {
+    margin: 1rem auto;
+  }
+  
+  .quote-container, .favorites-container {
+    padding: 1rem;
+  }
+  
+  #quote {
+    font-size: 1.2rem;
+  }
+  
+  #author {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .main-container {
+    max-width: 100%;
+    margin: 0.5rem;
+  }
+  
+  .quote-container, .favorites-container {
+    border-radius: 10px;
+  }
+  
+  #quote {
+    font-size: 1rem;
+  }
+  
+  #author {
+    font-size: 0.9rem;
+  }
+}
+ 
